@@ -1,0 +1,43 @@
+<header>
+    <app-navbar></app-navbar>
+</header>
+<main>
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body mt-0">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3">
+              <h1>Trades</h1>
+            </div>
+          </div>
+          <div class="table-responsive mb-0">
+            <table class="table table-centered table-nowrap">
+              <thead class="table-light">
+                <tr>
+                  <th class="align-middle">No. </th>
+                  <th class="align-middle">Instrument</th>
+                  <th class="align-middle">Strategy</th>
+                  <th class="align-middle">OrderId</th>
+                  <th class="align-middle">Time</th>
+                  <th class="align-middle">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let trade of trades; let i = index" [attr.data-index]="i">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{trade.instrument}}</td>
+                <td>{{trade.strategy.name}}</td>
+                <td>{{trade.orderId}}</td>
+                <td>{{trade.time}}</td>
+                <td>{{trade.status}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</main>

@@ -1,0 +1,18 @@
+<mat-toolbar color="" class="app-header">
+  <div><a routerLink="/dashboard" class="positronx">Algo Maker</a></div>
+  <span class="nav-tool-items">
+    <a mat-button routerLink="/dashboard" routerLinkActive="active" class="navItems">Dashboard</a>
+    <a mat-button routerLink="/account" routerLinkActive="active" class="navItems">Account</a>
+    <a mat-button routerLink="/strategy" routerLinkActive="active" class="navItems">Strategy</a>
+    <a mat-button routerLink="/position" routerLinkActive="active" class="navItems">Position</a>
+    <a mat-button routerLink="/trade" routerLinkActive="active" class="navItems">Trade</a>
+    <button mat-button mat-raised-button [matMenuTriggerFor]="menu"> {{name}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/330px-User_icon_2.svg.png" alt="" class="navImg"></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Item 1</button>
+      <button mat-menu-item class="btn btn-danger" (click)="logout()">
+        <div><i class='bx bx-power-off bx-sm text-danger'></i><b> Logout</b></div>
+        </button>
+    </mat-menu>
+
+  </span>
+</mat-toolbar>

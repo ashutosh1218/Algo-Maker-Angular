@@ -1,0 +1,138 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+<main>
+  <div class="default">
+    <div class="container-fluid">
+      <div class="row margin-top:10px">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h3 class="mb-0 font-size-25">DASHBOARD</h3>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <li class="breadcrumb-item active">Welcome to Dashboard</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-xl-4">
+        <div class="card overflow-hidden mt-3">
+          <div class="bg-primary bg-soft">
+            <div class="row">
+              <div class="col-7">
+                <div class="text-primary p-3">
+                  <h3 class="text-primary">Welcome Back !</h3>
+                  <p>Algo Maker Dashboard</p>
+                </div>
+              </div>
+              <div class="col-5 align-self-end">
+                <img src="assets/images/profile-img.png" alt="" class="img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="card-body pt-0">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="avatar-md profile-user-wid mb-2">
+                  <img src="assets/images/userIcon.png" alt="" class="img-thumbnail rounded-circle profileImg">
+                </div>
+                <h3 class="font-size-25 text-truncate">{{name}}</h3>
+                <p class="text-muted mb-0 text-truncate">Trader</p>
+              </div>
+
+              <div class="col-sm-8">
+                <div class="pt-4">
+
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="font-size-15">125</h5>
+                      <p class="text-muted mb-0">Projects</p>
+                    </div>
+                    <div class="col-6">
+                      <h5 class="font-size-15">$1245</h5>
+                      <p class="text-muted mb-0">Revenue</p>
+                    </div>
+                  </div>
+                  <div class="mt-4">
+                    <a href="" class="btn btn-primary btn-sm">View Profile <i class="mdi mdi-arrow-right ms-1"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-4">
+          <div class="card-body">
+            <h4 class="card-title mb-4">Monthly Earning</h4>
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="text-muted">This month</p>
+                <h3>$34,252</h3>
+                <p class="text-muted"><span class="text-success mr-2"> 12% <i class="mdi mdi-arrow-up"></i>
+                  </span> From
+                  previous period</p>
+
+                <div class="mt-4">
+                  <a href="" class="btn btn-primary btn-sm">View More <i class="mdi mdi-arrow-right ms-1"></i></a>
+                </div>
+              </div>
+              <div class="col-sm-6">
+
+
+              </div>
+            </div>
+            <p class="text-muted mb-0 mt-2">We craft digital, graphic and dimensional thinking.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8">
+        <div class="row">
+          <div *ngFor="let stat of statData" class="col-md-4">
+            <div class="card mini-stats-wid mt-3 px-md-2">
+                <div class="card-body">
+                  <div class="media">
+                    <div class="media-body">
+                      <em><h3 class="text-muted fw-medium">{{stat.title}}</h3></em>
+                      <h4 class="mb-0">{{stat.value}}</h4>
+                    </div>
+              
+                    <div class="mini-stat-icon avatar-sm rounded-circle bg-primary align-self-center">
+                      <span class="avatar-title">
+                        <i class="bx {{stat.icon}} font-size-24 bx-md"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- end card-body -->
+              </div>
+          </div>
+        </div>
+        <div class="card mt-4">
+          <div class="card-body">
+            <div class="d-sm-flex flex-wrap">
+              <h4 class="card-title mb-4">Email Sent</h4>
+              <div class="ms-auto">
+                <ul class="nav nav-pills">
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript: void(0);">Week</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript: void(0);">Month</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="javascript: void(0);">Year</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <apx-chart dir="ltr" class="apex-charts">
+            </apx-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

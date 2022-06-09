@@ -1,0 +1,277 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+<main>
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body mt-0">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-8">
+              <b>
+                <h1 class="card-title mb-1">Strategies</h1>
+              </b>
+            </div>
+            <div class="col-3">
+              <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add Strategy</button>
+            </div>
+            <div class="table-responsive mb-0">
+              <table class="table table-centered table-nowrap">
+                <thead class="table-light">
+                  <tr>
+                    <th class="align-middle">No. </th>
+                    <th class="align-middle">Name</th>
+                    <th class="align-middle">Instrument</th>
+                    <th class="align-middle">Symbol</th>
+                    <th class="align-middle">PNL</th>
+                    <th class="align-middle">Active</th>
+                    <th class="align-middle">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let strategy of strategies; let i = index" [attr.data-index]="i">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{strategy.name}}</td>
+                    <td>{{strategy.instrument}}</td>
+                    <td>{{strategy.symbol}}</td>
+                    <td>{{strategy.timeframe}}</td>
+                    <td>{{strategy.active}}</td>
+                    <td>{{strategy.action}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-basic-title">Enter Details</h2>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body addAccount">
+      <form>
+        <div class="mb-3">
+          <div class="card rounded-3">
+            <div class="card-body p-4 p-md-5">
+              <form class="px-md-2" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div class="form-outline mb-4">
+                  <div class="row">
+                    <div class="col-8">
+                      <label class="form-label" for="form3Example1q"> Strategy Name</label>
+                      <input type="text" class="form-control" id="name" name="name" ngModel #name="ngModel"
+                        class="form-control" required />
+
+                    </div>
+                    <div class="col-2">
+                      <label class="form-label" for="form3Example1q">Entry Time*</label>
+                      <input type="time" class="form-control" id="entryTime" name="entryTime" ngModel
+                        #entryTime="ngModel" class="form-control" required />
+                    </div>
+                    <div class="col-2">
+                      <label class="form-label" for="form3Example1q">Exit Time*</label>
+                      <input type="time" class="form-control" id="exitTime" name="exitTime" ngModel #exitTime="ngModel"
+                        class="form-control" required />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Direction</label>
+                    <br>
+                    <select id="direction" name="direction" ngModel #direction="ngModel"
+                      class="form-control select" required>
+                      <option value="buy">Buy</option>
+                      <option value="sell">Sell</option>
+                      <option value="both">Both </option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Timeframe</label>
+                    <br>
+                    <select id="timeframe" name="timeframe" ngModel #timeframe="ngModel"
+                      class="form-control select" required>
+                      <option value="1">1 min</option>
+                      <option value="2">5 min</option>
+                      <option value="15">15 min</option>
+                      <option value="30">30 min</option>
+                      <option value="60">60 min</option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Instrument(For Analysis)</label>
+                    <br>
+                    <select id="instrument" name="instrument" ngModel #instrument="ngModel"
+                      class="select form-control" required>
+                      <option value="NIFTYFUT">NIFTYFUT</option>
+                      <option value="BANKNIFTYFUT">BANKNIFTYFUT</option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label" >Symbol To Trade</label>
+                    <br>
+                    <select class="form-control"
+                    id="symbol" name="symbol" ngModel
+                      #symbol="ngModel" class="select form-control" required>
+                      <option value="1"></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Indicator 1</label>
+                    <br>
+                    <select id="indicator1" name="indicator1" ngModel #indicator1="ngModel"
+                      class="form-control" required>
+                      <option value="2">Supertrend</option>
+                      <option value="rsi">rsi</option>
+                      <option value="sma">sma </option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Period 1</label>
+                    <input type="text" class="form-control" id="period1" name="period1" ngModel #period1="ngModel"
+                      class="form-control" required />
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Multiplier 1</label>
+                    <input type="text" placeholder="0" id="multiplier1" name="multiplier1" ngModel
+                      #multiplier1="ngModel" class="form-control" required />
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Candle Param 1</label>
+                    <br>
+                    <select id="candleParam1" name="candleParam1" ngModel #candleparam1="ngModel"
+                      class="form-control" required>
+                      <option value="close">Close</option>
+                      <option value="high">High</option>
+                      <option value="low">Low</option>
+                      <option value="open">Open</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Indicator 2</label>
+                    <br>
+                    <select id="indicator2" name="indicator2" ngModel #indicator2="ngModel"
+                      class="form-control" required>
+                      <option value="candle">candle</option>
+                      <option value="supertrend">Supertrend</option>
+                      <option value="rsi">rsi</option>
+                      <option value="sma">sma </option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Period 2</label>
+                    <input type="text" id="period2" class="form-control"
+                    name="period2" ngModel #period2="ngModel"
+                    required />
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Multiplier 2</label>
+                    <input type="text" id="multiplier2" class="form-control"
+                    name="multiplier2" ngModel #multiplier2="ngModel"
+                    required placeholder="0" />
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Candle Param 2</label>
+                    <br>
+                    <select
+                    id="candleParam2" class="form-control"
+                    name="candleParam2" ngModel #multiplier2="ngModel"
+                    required>
+                      <option value="close">Close</option>
+                      <option value="high">High</option>
+                      <option value="low">Low</option>
+                      <option value="open">Open</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Condition</label>
+                    <br>
+                    <select
+                    id="condition" class="form-control"
+                    name="condition" ngModel #condition="ngModel"
+                    required>
+                      <option value="crossabove">Cross Above</option>
+                      <option value="crossbelow">Cross Below</option>
+                      <option value="crossover">Cross Over </option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Order type</label>
+                    <br>
+                    <select
+                    id="orderType" class="form-control"
+                    name="orderType" ngModel #orderType="ngModel"
+                    required>
+                      <option value="MIS">MIS</option>
+                      <option value="NRML">NRML</option>
+                      <option value="CNC">CNC</option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Target</label>
+                    <input type="text" class="form-control" placeholder="0"
+                    id="target" 
+                    name="target" ngModel #target="ngModel"
+                    required />
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Target Unit</label>
+                    <br>
+                    <select class="form-control"
+                    id="targetunit" 
+                    name="targetunit" ngModel #targetunit="ngModel"
+                    required >
+                      <option value="%">%</option>
+                      <option value="Rs">points</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Stoploss</label>
+                    <input type="text"  class="form-control" placeholder="0"
+                    id="stopLoss" 
+                    name="stopLoss" ngModel #stopLoss="ngModel"
+                    required />
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Stoploss Unit</label>
+                    <br>
+                    <select class="form-control"
+                    id="stopLossunit" 
+                    name="stopLossunit" ngModel #stopLossunit="ngModel"
+                    required>
+                      <option value="%">%</option>
+                      <option value="Rs">points</option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label for="exampleDatepicker1" class="form-label">Quantity</label>
+                    <input type="number"  class="form-control" placeholder="0" value=0
+                    id="quantity" 
+                    name="quantity" ngModel #quantity="ngModel"
+                    required />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click'); onSubmit(f)" [disabled]="f.invalid">Save</button>
+    </div>
+  </ng-template>
+</main>

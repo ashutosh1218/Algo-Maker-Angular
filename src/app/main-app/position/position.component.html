@@ -1,0 +1,42 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+
+<main>
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body mt-0">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-3">
+              <h2>Positions</h2>
+            </div>
+          </div>
+          <div class="table-responsive mb-0">
+            <table class="table table-centered table-nowrap">
+              <thead class="table-light">
+                <tr>
+                  <th class="align-middle">No. </th>
+                  <th class="align-middle">Symbols</th>
+                  <th class="align-middle">Product Type</th>
+                  <th class="align-middle">Quantity</th>
+                  <th class="align-middle">PNL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let position of positions; let i = index" [attr.data-index]="i">
+                  <td>{{i+1}}</td>
+                  <td>{{position.symbol}}</td>
+                  <td>{{position.productType}}</td>
+                  <td>{{position.qty}}</td>
+                  <td>{{position.pnl}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</main>

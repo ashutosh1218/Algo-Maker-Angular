@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="app-header">
+    <div><a href="/" target="_blank" class="positronx">Algo Live</a></div>
+    <span class="nav-tool-items">
+      <a mat-button routerLink="/login" routerLinkActive="active">Log in</a>
+      <a mat-button mat-raised-button routerLink="/register" routerLinkActive="active">Register</a>
+    </span>
+  </mat-toolbar>
+  <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+      <mat-card class="box">
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <form class="example-form" #f="ngForm"
+        (ngSubmit)="onSubmit(f)">
+          <mat-card-content>
+            <mat-form-field class="example-full-width">
+              <input matInput type="email" placeholder="Email" name="email" ngModel #email="ngModel" required>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput type="password" placeholder="Password" name="password" ngModel #password="ngModel" required>
+            </mat-form-field>
+          </mat-card-content>
+          <button mat-stroked-button 
+          type="submit"
+          color="accent" 
+          class="btn-block" 
+          [disabled]="f.invalid">Log In</button>
+          
+        </form>
+      </mat-card>
+    </div>

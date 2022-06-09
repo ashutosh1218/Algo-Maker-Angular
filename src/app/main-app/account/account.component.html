@@ -1,0 +1,161 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+<main>
+  <div class="container">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body mt-0">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-8">
+              <b>
+                <h1 class="card-title mb-1">Accounts</h1>
+              </b>
+            </div>
+            <div class="col-3">
+              <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add Account</button>
+            </div>
+          </div>
+          <div class="table-responsive mb-0">
+            <table class="table table-centered table-nowrap">
+              <thead class="table-light">
+                <tr>
+                  <th class="align-middle">No. </th>
+                  <th class="align-middle">Instrument</th>
+                  <th class="align-middle">Strategy</th>
+                  <th class="align-middle">OrderId</th>
+                  <th class="align-middle">Time</th>
+                  <th class="align-middle">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let account of accounts; let i = index" [attr.data-index]="i">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{account.name}}</td>
+                  <td>{{account.userID}}</td>
+                  <td>{{account.balance}}</td>
+                  <td>{{account.auth_type}}</td>
+                  <td>{{account._id}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h2 class="modal-title" id="modal-basic-title">Enter Details</h2>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body addAccount">
+      <form>
+        <div class="mb-3">
+          <div class="card rounded-3">
+            <div class="card-body p-4 p-md-5">
+
+              <form class="px-md-2" #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+                <div class="form-outline mb-4">
+                  <div class="row">
+                    <div class="col-8">
+                      <label class="form-label" for="form3Example1q">Name</label>
+
+                      <input type="text" placeholder="name" id="name"
+                      name="name"
+                      ngModel #name="ngModel" class="form-control"
+                        required />
+
+                    </div>
+                    <div class="col-4">
+                      <label class="form-label" for="form3Example1q">UserID</label>
+                      <input type="text" class="form-control"
+                      name="userID"
+                      id="userID" ngModel #userID="ngModel" required />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-4">
+
+                    <label for="exampleDatepicker1" class="form-label">Broker</label>
+                    <br>
+                    <select class="form-control" id="broker"
+                    name="broker" ngModel #broker="ngModel" required>
+                      <option value="zerodha">Zerodha</option>
+                      <option value="iifl">IIFL</option>
+                      <option value="fyers">Fyers </option>
+                    </select>
+
+                  </div>
+                  <div class="col-8">
+
+                    <label class="form-label" for="form3Example1q">Password</label>
+                    <input type="password" class="form-control" id="password"
+                    name="password" ngModel #password="ngModel" required />
+
+                  </div>
+                </div>
+                <div class="row mt-2">
+                  <div class="col-4">
+                    <label for="exampleDatepicker1" class="form-label">Auth Type</label>
+                    <br>
+                    <select class="form-control" id="auth_type"
+                    name="auth_type" ngModel #auth_type="ngModel" required>
+                      <option value="pin">PIN</option>
+                      <option value="totp">OTP</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-8" *ngIf="f.value.auth_type==='pin'">
+                    <label class="form-label" for="form3Example1q">Pin</label>
+                    <input type="password" 
+                    name="pin" class="form-control" placeholder="123456"
+                    id="pin"
+                    name="pin" ngModel #pin="ngModel" required />
+                  </div>
+                  <div class="col-8" *ngIf="f.value.auth_type==='totp'">
+                    <label class="form-label" for="form3Example1q">T-OTP Secret</label>
+                    <input type="password" 
+                    name="top_secret" class="form-control" placeholder="123456"
+                    id="totp"
+                    name="top_secret" ngModel #top_secret="ngModel" required />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-8">
+                    <label class="form-label" for="form3Example1q">Api Key</label>
+                    <input type="text" class="form-control"
+                    name="apiKey" placeholder="asdw4345fdf" id="apiKey" ngModel
+                      #apiKey="ngModel" required />
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-8">
+                    <label class="form-label" for="form3Example1q">Secret</label>
+                    <input type="text" class="form-control"
+                    name="secret" placeholder="gfvguwygu68756gy"
+                    id="secret" 
+                      ngModel #secret="ngModel"
+                      required />
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click'); onSubmit(f)" [disabled]="f.invalid">Save</button>
+    </div>
+  </ng-template>
+
+
+</main>
